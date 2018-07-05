@@ -6,10 +6,20 @@
   <form>
     <div class="form-group">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search for movies..." [(ngModel)]="searchStr" name="searchStr" (keyup.enter)="searchMovies()">
+          <mat-form-field style="width:100%">
+              <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" 
+                [matAutocomplete]="auto" [(ngModel)]="searchStr" (keyup)="inputKeyUp($event)">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option.original_title" (onSelectionChange)="optionSelected(option.original_title)">
+                    <img style="vertical-align:middle; margin-right: 10px" aria-hidden src="https://image.tmdb.org/t/p/w300/{{option.poster_path}}" height="25" />
+                    <span>{{option.original_title}}</span> 
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+        <!-- <input type="text" class="form-control" placeholder="Search for movies..." [(ngModel)]="searchStr" name="searchStr" (keyup.enter)="searchMovies()">
         <span class="input-group-btn">
           <button class="btn btn-primary" type="button" (click)="searchMovies()">Go!</button>
-        </span>
+        </span> -->
       </div>
       <!-- /input-group -->
     </div>
