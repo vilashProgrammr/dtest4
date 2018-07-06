@@ -14,7 +14,7 @@ export class MovieDetailsPopupComponent {
   constructor(public dialogRef: MatDialogRef<MovieDetailsPopupComponent>){}
   
 ngOnInit() {
-  this.movie = this.dialogRef._containerInstance._config.data;
+  this.movie = this.dialogRef.componentInstance.movie;
 }
 
 onMovieSelected() {

@@ -19,6 +19,7 @@ export class MovieCardComponent {
     width: '800px',
     data: movie
     });
+    dialogRef.componentInstance.movie = movie;
     // const sub = dialogRef.componentInstance.onMovieSelect.subscribe((data) => {
     //  this.addToMovieBucket(data);
     // });
